@@ -1,0 +1,91 @@
+{
+  "title": {
+    "value": "Confluence Hello World Macro Tutorial"
+  },
+  "context": {
+    "name": "confluence-helloworld-addon",
+    "product": "confluence"
+  },
+  "sections": [
+    {
+      "key": "section-create-addon",
+      "title": {
+        "value": "Create the plugin Project"
+      },
+      "template": "connect-create-addon",
+      "context": {
+        "time": "5 minutes"
+      }
+    },
+    {
+      "title": {
+        "value": "Update the Descriptor"
+      },
+      "description": {
+        "value": [
+          "Now you've got the basic architecture for your add-on. If you open the addon directory, you'll see essentials like the atlassian-connect.json descriptor in the root.",
+          "In this section we will edit the descriptor to add the macro definition.  This will tell Confluence about the macro, so your users can use it."
+        ]
+      },
+      "key": "section-update-descriptor",
+      "template": "update-json-file",
+      "context": {
+        "file": "atlassian-connect.json",
+        "location": "modules",
+        "action": "add",
+        "time": "10 minutes",
+        "value": {
+          "dynamicContentMacros": [
+            {
+              "width": "200px",
+              "height": "200px",
+              "url": "/macro",
+              "description": { "value": "My Hello-World macro" },
+              "categories": [ "visuals" ],
+              "outputType": "block",
+              "bodyType": "none",
+              "key": "hello-world-macro",
+              "name": { "value": "Hello World" }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "section-implement-macro",
+      "title": {
+        "value": "Implement the Macro"
+      },
+      "description": {
+        "value": [
+          "In this section, we will use the Atlassian Connect Express framework to implement the route needed to handle a macro. Add the following handler to your routes/index.js file"
+        ]
+      },
+      "template": "implement-macro",
+      "context": {
+        "time": "10 minutes",
+        "directory": "routes",
+        "file": "macro.js",
+        "routes_file_source": "./routes/macro.js",
+        "macro_content":"macro_content_place_holder"
+
+      }
+    },
+    {
+      "key": "section-show-macro",
+      "title": {
+        "value": "Run the Macro"
+      },
+      "description": {
+        "value": [
+          "This section will show your new macro running on a page inside Confluence."
+        ]
+      },
+      "template": "show-page",
+      "context": {
+        "hideInfo": true,
+        "page_content" : "<p><ac:structured-macro ac:name=\"hello-world-macro\" ac:schema-version=\"1\"/></p>"
+      }
+    }
+  ]
+}

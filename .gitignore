@@ -1,0 +1,8 @@
+*.iml
+*.idea
+.DS_Store
+node_modules
+store.db
+*.pem
+credentials.json
+settings.json
